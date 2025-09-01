@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Self-study/Preparation for Class Activity on Web Development (Front-end)</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <style>
+            body{font-family: Arial, Helvetica, sans-serif;padding: 20px;}
+            section{margin: 40px 0;}
+            h1{font-size: 1.5em;}
+            h2{border-bottom: 1px solid #018ADA;font-size: 1.2em;padding-bottom: 8px;}
+            h3{margin: 16px 0 0 0;font-size: 1em;}
+            p{margin: 8px 0;}
+            a{color: #018ADA;}
+            a:visited{color: #006dac;}
+            a:hover{color: #FFA200;}
+            .rendered-html{
+                padding: 10px;
+                margin: 16px 0;
+                border: 1px solid #AAA;
+                border-radius: 4px;
+                background-color: #EEE;
+            }
+            .rendered-html h2{border:none;}
+            .rendered-html h3{margin: 16px 0 0 0;}
+            pre > code{font-size: 1.2em;}
+            code{font-size: 1.2em;}
+            #course-info{
+                margin-top: 16px;
+                padding: 4px;
+                font-size: 0.8em;
+                background-color: #A2FF00;
+                border-radius: 4px;
+                display: inline-block;
+            }
+            #layout-holder{
+                
+            }
+            #section-navigation{
+
+            }
+            #section-navigation > ul{
+
+            }
+            #section-navigation > ul > li{
+
+            }
+            #main-content{
+
+            }
+            .question-item{
+                display: flex;
+                align-items: center;
+                margin: 16px 0;
+                border: 1px solid #AAA;
+                padding: 16px;
+                border-radius: 8px;
+            }
+            .question-item .question-picture{
+                width: 80px;
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+            .question-item .question-picture > img{
+                width: 100%;
+                height: auto;
+            }
+            .question-item .question{
+                flex-grow: 1;
+                padding-left: 16px;
+                font-size: 1.2em;
+            }
+            #instruction{
+                padding: 8px;
+                border-radius: 8px;
+                border:1px solid #018ADA;
+                background-color: white;
+            }
+            .keyword{
+                display: inline-block;
+                padding: 0 4px;
+                background-color: #A2FF00;
+            }
+            label{
+                font-weight: bold;
+            }
+            .light{
+                color: #AAA;
+            }
+        </style>
+    </head>
+    <body>
+
+<div id="course-info">2110222 Introduction to CEDT</div>
+<h1>Self-study/Preparation for Class Activity on Web Development (Front-end) : Part II</h1>
+<div id="layout-holder">
+    <p id="author">
+        <strong>Author:</strong> Atiwong Suchato (with a lot of help from ChatGPT) 
+    </p>
+    <p id="instruction">
+        <strong>Instruction:</strong> Read the following content and answer questions in the answer sheet in items with matching animal stickers. <span style="color:rgb(0, 176, 32);"></span>
+    </p>
+    <nav id="section-navigation">
+        <h2>Table of contents</h2>
+        <ul>
+            <li><a href="#your-js-exp">Your JavaScript Experiences</a></li>
+            <li><a href="#js-classes-and-objects">JavaScript Classes and Objects</a></li>
+            <li><a href="#web-apis">Web APIs</a></li>
+            <li><a href="#web-speech-apis">Client-side API Example: Web Speech API</a></li>
+            <li><a href="#exchanging-data-in-json">Exchanging Data in JSON format</a></li>
+            <li><a href="#pokemon-api">Server-side API Example: The Pokémon API</a></li>
+            <li><a href="#fetch-api">The Fetch API</a></li>
+            <li><a href="#js-framework">JavaScript Frameworks</a></li>
+            <li><a href="#what-is-phaser">What is Phaser?</a></li>
+            <li><a href="#serving-w-web-server">Serving Phaser App with a Web Server</a></li>
+            <li><a href="#hello-world-in-phaser">&quot;Hello World&quot; in Phaser</a></li>
+            <li><a href="#scene-in-phaser">Scene in Phaser</a></li>
+            <li><a href="#handling-mouse-clicks">Handling Mouse Clicks in Phaser</a></li>
+            <li><a href="#animation-w-sprite-sheets">Animation with Sprite Sheets</a></li>
+            <li><a href="#what-to-expect">What to Expect in the Upcoming Activity</a></li>
+        </ul>
+    </nav>
+    
+    <main id="main-content">
+        <section>
+            <a name="your-js-exp"></a>
+            <h2>Your JavaScript Experiences</h2>
+            <p>From the previous activity, you should have gained some experiences in writing JavaScript programs. To recap, here is a list of key concepts that you should have learned:
+            </p>
+            <ul>
+                <li>Loading an external JS file into the web page.</li>
+                <li>Targeting an element in the DOM tree. (either by the id attribute or by class names)</li>
+                <li>Reading values from form elements</li>
+                <li>Creating an element and setting the values of its attributes.</li>
+                <li>Appending an element to the DOM tree.</li>
+                <li>Removing an element from the DOM tree.</li>
+            </ul>
+            <p>
+                In the upcoming activity, you will do some hands-on activities to get familiar with using JavaScript libraries and calling web APIs.
+            </p>
+        </section>
+        
+        <section>
+            <a name="js-classes-and-objects"></a>
+            <h2>JavaScript Classes and Objects</h2>
+            <p>
+                A JavaScript <span class="keyword">class</span> is a blueprint for creating objects with predefined properties and methods. Classes provide an intuitive and clear syntax for <span class="keyword">object-oriented programming in JavaScript</span>. A class encapsulates data for the object and methods to operate on that data.
+            </p>
+            <p>
+                Here is an example of a class definition in JavaScript:
+                <code>
+                    <pre>
+        class Car {
+            constructor(brand, model, year) {
+                this.brand = brand;
+                this.model = model;
+                this.year = year;
+            }
+        
+            displayInfo() {
+                console.log(`This car is a ${this.year} ${this.brand} ${this.model}.`);
+            }
+        }    
+                    </pre>
+                </code>
+            </p>
+            <p>
+                An <span class="keyword">object</span> is an instance of a class. It's a collection of key-value pairs, where the keys are property names and the values can be data or functions. Objects are created using the <code>new</code> keyword followed by the class name. Each object can have its own values for the class's properties, allowing for individual characteristics, while sharing the same methods defined in the class.
+            </p>
+            <p>
+                Here is an example of creating 2 objects from the class <code>Car</code>:
+                <code>
+                    <pre>
+        let car1 = new Car("Toyota", "Vios", 2018);
+        let car2 = new Car("Honda", "Civic", 2019);
+        car1.displayInfo();
+        car2.displayInfo();
+                    </pre>
+                </code>
+            </p>
+            <p>
+                In JavaScript, you can also create an object without a class definition. This is called an <span class="keyword">object literal</span>. For example:
+                <code>
+                    <pre>
+            let car = {
+            brand: "Toyota",
+            model: "Vios",
+            year: 2018,
+            displayInfo: function() {
+                console.log(`This car is a ${this.year} ${this.brand} ${this.model}.`);
+            }
+        };
+                    </pre>
+                </code>
+            </p>
+            <p>
+                To access the properties and methods of an object, you can use the <code>dot</code> notation. For example:
+                <code>
+                    <pre>
+        console.log(car.brand);
+        car.displayInfo();
+                    </pre>
+                </code>
+            </p>
+            <p>
+                Creating an object directly is great for a one-off item with unique features. But, if you want many objects with the same features, using a class is smarter. This is the essence of Object-Oriented Programming: it helps you reuse code and keep things organized.
+            </p>
+        </section>
+        <section class="question-item">
+            <div class="question-picture">
+                <img src="images/stickers/llama.png">
+            </div>
+            <div class="question">
+                <p>หากมีการประกาศ class ดังนี้
+                    </p><pre><code>        
+                        class Student {
+                            constructor(studentId, faculty, major) {
+                                this.studentId = studentId;
+                                this.faculty = faculty;
+                                this.major = major;
+                            }
+                        } 
+                    </code></pre>
+                    <p>และทำการสร้าง object ผ่านคำสั่ง let student1 = new Student("6731000000", "Engineering"); จะสร้าง object สำเร็จหรือไม่ หากสร้างสำเร็จ ค่า "major" ของ student1 จะเป็นอย่างไร
+                </p>
+            </div>
+        </section>
+        <section>
+        <section>
+            <a name="web-apis"></a>
+            <h2>Web APIs</h2>
+            <p>
+                A web API is an application programming interface (API) that plays a crucial role in the development of modern web applications. They can be broadly categorized into two types: <span class="keyword">client-side APIs</span> and <span class="keyword">server-side APIs</span>.
+            </p> 
+
+            <h3>Client-side APIs</h3>
+            <p>
+                <span class="keyword">Client-side Web APIs</span> are interfaces that are available in the web browser environment and allow web applications to interact with the browser itself or to access certain hardware features of the client device. These APIs are built into the browser and expose functionalities that are executed on the client's side, i.e., on the user's device. The primary purpose of client-side APIs is to enhance the interactivity and functionality of web pages without the need to send requests to the server for every action.
+            </p>
+            <p>Some of the most commonly used client-side APIs include:
+                <ul>
+                    <li><label>DOM API</label>: Enables manipulation of the page content, structure, and styles. (We have used them in the last activity.)</li>
+                    <li><label>Fetch API</label>: Allows making asynchronous HTTP requests to servers for data without reloading the page. (We will use them in the upcoming activity)</li>
+                    <li><label>Web Storage API</label>: Provides mechanisms for storing data in the browser, such as localStorage and sessionStorage.</li>
+                    <li><label>Canvas and WebGL API</label>: Allows rendering 2D and 3D graphics in the browser.</li>
+                </ul>
+            </p>
+
+            <h3>Server-side APIs</h3>
+            <p>
+                <span class="keyword">Server-side Web APIs</span> are interfaces exposed by servers, allowing clients to interact with a remote system or backend services over the network, typically using HTTP or HTTPS protocols. Server-side APIs are commonly used to access databases, perform authentication, and handle business logic on the server.
+            </p>
+        </section>
+
+        <section>
+            <a name="web-speech-apis"></a>
+            <h2>Client-side API Example: Web Speech API</h2>
+            <p>
+                The <span class="keyword">Web Speech API</span> is a client-side API that allows web developers to incorporate speech recognition and speech synthesis capabilities into their web applications. This API enables users to interact with web pages using voice commands and to have the web page read out loud to them.
+            </p>
+            <p>
+                Here is an example of using the Web Speech API to read out loud the text entered into a text area:
+                <code>
+                    </code></p><pre><code>        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+            &lt;head&gt;
+                &lt;title&gt;Web Speech API Demo&lt;/title&gt;
+                &lt;script&gt;
+                    function speak() {
+                        let msg = document.getElementById('webspeechapi-demo-text').value;
+                        let utt = new SpeechSynthesisUtterance(msg);
+                        utt.lang = 'th-TH';
+                        window.speechSynthesis.speak(utt);
+                    }
+                &lt;/script&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+                &lt;h1&gt;Web Speech API Demo&lt;/h1&gt;
+                &lt;textarea id="webspeechapi-demo-text" rows="10" cols="50"&gt;&lt;/textarea&gt;&lt;br&gt;
+                &lt;button onclick="speak()"&gt;Speak&lt;/button&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+                    </code></pre><code>
+                </code>
+            <p></p>
+            <p>
+                The demo above can be tested <a href="webspeechapi/webspeechdemo.html" target="_blank">here</a>.
+            </p>
+                
+
+       </section>
+      
+
+       <section>
+            <a name="exchanging-data-in-json"></a>
+            <h2>Exchanging Data in JSON format</h2>
+            <p>
+                <span class="keyword">JSON</span> (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write, and easy for machines to parse and generate. It is based on a subset of the JavaScript Programming Language but is <span class="keyword">language-independent</span>, with parsers available for many languages.
+            </p>
+            <p>
+                Here is an example of a description of an object in JSON format:
+                <code>
+                    </code></p><pre><code>        {
+            "name": "Captain Awesome",
+            "age": 30,
+            "isStudent": false,
+            "email": "captain.awesome@example.com",
+            "phoneNumbers": ["123-456-7890", "098-765-4321"],
+            "address": {
+                "houseNumber": "123/45",
+                "soi": "Sukhumvit 11",
+                "road": "Sukhumvit",
+                "subDistrict": "Khlong Toei Nuea",
+                "district": "Watthana",
+                "province": "Bangkok",
+                "zipCode": "10110"
+            }
+        }           
+                    </code></pre><code>
+                </code>
+            <p></p>
+            <p>
+                From the JSON data above, you can see that it is easy to understand the structure of the data which consists of key-value pairs. The value can be a string (such as the attribute <code>name</code>), a number (such as the attribute <code>age</code>), a boolean (such as the attribute <code>isStudent</code>), an array (such as the attribute <code>phoneNumbers</code>), or another JSON object (such as the attribute <code>address</code>). 
+            </p>
+
+            <h3>Converting a JavaScript object to JSON</h3>
+            <p>
+                In JavaScript, you can convert an object to a JSON string using the <code>JSON.stringify()</code> method. For example:
+                <code>
+                    </code></p><pre><code>        let person1 = {}
+        person1.name = "Captain Awesome";
+        person1.age = 30;
+        person1.isStudent = false;
+
+        let person2 = {}
+        person2.name = "Diligent Daisies";
+        person2.age = 16;
+        person2.isStudent = true;
+
+        let people = [person1, person2];
+        const peopleJSON = JSON.stringify(people);
+                    </code></pre><code>
+                </code>
+                The variable <code>peopleJSON</code> will contain the JSON string corresponding to the array of objects <code>people</code>.
+            <p></p>
+
+            <h3>Converting JSON to a JavaScript object</h3>
+            <p>
+                In JavaScript, you can convert a JSON string to a JavaScript object using the <code>JSON.parse()</code> method. For example:
+                <code>
+                    </code></p><pre><code>        const people = JSON.parse(peopleJSON);
+                    </code></pre><code>
+                </code>
+                The variable <code>people</code> will contain the array of objects corresponding to the JSON string <code>peopleJSON</code>.
+            <p></p>
+
+       </section>
+
+       <section>
+            <a name="pokemon-api"></a>
+            <h2>Server-side API Example: The Pokémon API</h2>
+            <p>
+                Here, we will get ourselves familiar with obtaining publicly available data on the Internet using a server-side API.
+            </p>
+            <p>
+                The <a href="https://pokeapi.co/" target="_blank" title="Go to the Pokémon API website">Pokémon API</a> is a server-side API that provides a wealth of information about Pokémon, including their names, abilities, types, and more. This API allows developers to access and retrieve Pokémon-related data, which can be used to create engaging web applications, games, and other digital experiences.
+            </p>
+            <p>
+                Copy the following URL and paste it into your web browser's address bar to see the data returned by the Pokémon API:
+                <code>https://pokeapi.co/api/v2/pokemon/pikachu</code>
+            </p>
+            <p>
+                You will see a lot of texts! Does the format look familiar? Yes, it is in JSON format. with this many texts without proper indentation, it is hard to read. We can use an online JSON formatter such as <a href="https://jsonformatter.curiousconcept.com/" target="_blank" title="Go to the JSON Formatter website">JSON Formatter</a> to make it more readable. 
+            </p>
+       </section>
+       <section class="question-item">
+        <div class="question-picture">
+            <img src="images/stickers/anteater.png">
+        </div>
+        <div class="question">
+            <p>จากการลองเข้าถึง API https://pokeapi.co/api/v2/pokemon/pikachu อยากทราบว่า pikachu มี id เป็นเท่าไหร่ (Hint: ใช้ JSON Formatter เพื่อความง่ายในการอ่านข้อมูลในรูปแบบ JSON)
+            </p>
+        </div>
+    </section>
+
+       <section>
+        <a name="fetch-api"></a>
+        <h2>The Fetch API</h2>
+        <p>
+            The <span class="keyword">Fetch API</span> provides a modern, powerful way to <span class="keyword">asynchronously fetch resources from the network</span> in JavaScript. If we want the response from the Pokémon API from before at its most basic, we can use the Fetch API like this:
+            <code>
+                </code></p><pre><code>    fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
+        .then(response =&gt; response.json())
+        .then(data =&gt; console.log(data));
+                </code></pre><code>
+            </code>
+        <p></p>
+        <p>
+            The Fetch API is used here to get data from the Pokémon API. First, it requests data from <code>https://pokeapi.co/api/v2/pokemon/pikachu</code>. When the request is complete, it processes the response to read it as JSON, a common format for sending and receiving data on the web. Finally, it takes that data and displays it in the console. This lets you work with the received information, such as details about Pikachu from the Pokémon API, without blocking other scripts from running while waiting for the request to finish.
+        </p>
+        </section>
+        <section class="question-item">
+            <div class="question-picture">
+                <img src="images/stickers/leopard.png">
+            </div>
+            <div class="question">
+                <p>จากโค้ดต่อไปนี้
+                    </p><pre><code>        
+                        fetch('https://pokeapi.co/api/v2/pokemon/pikachu')
+                        .then(response => response.json())
+                        .then(data => console.log(data));
+                    </code></pre>
+                    <p>หากมีการ<label>นำบรรทัด .then(response => response.json()) ออก </label>จะเกิดอะไรขึ้น
+                </p>
+            </div>
+        </section>
+        <section>
+            <a name="js-framework"></a>
+            <h2>JavaScript Frameworks</h2>
+            <p>
+                A <span class="keyword">JavaScript framework</span> is a collection of JavaScript code libraries that provide developers with pre-written code to use for routine programming features and tasks, essentially a template or framework to build upon for creating web applications or websites. It offers a standard way to build and deploy applications on the web.
+            </p>
+            <p>
+                Popular JavaScript frameworks include Angular, React, Vue.js, and Ember.js, each with its own set of conventions and best practices. Choosing a framework often depends on the specific needs of the project, team expertise, and the specific features and support provided by the framework.
+            </p>
+            <p>
+                Frameworks can dramatically speed up development time, enforce best practices, and provide powerful features to handle common web development challenges. However, they also require developers to learn the specific rules and conventions of the framework, which can have a learning curve.
+            </p>
+            <p>
+                In the upcoming activity, you will use a JavaScript framework for creating 2D games called &quot;Phaser&quot;.
+            </p>
+        </section>
+
+        <section>
+            <a name="what-is-phaser"></a>
+            <h2>What is Phaser?</h2>
+            <p>
+                <span class="keyword">Phaser</span> is a powerful and versatile open-source framework designed for creating 2D games that run in a web browser. It simplifies the game development process by providing a comprehensive set of tools and features, such as physics engines, sprite management, and input handling, making it accessible for developers of all skill levels.
+            </p>
+            <p>
+                For a full introduction to Phaser, you can visit the <a href="https://phaser.io/" target="_blank" title="Go to the Phaser website">official Phaser website</a>.
+            </p>
+            
+            <p>
+                Here are some key highlights of Phaser:
+                <ul>
+                    <li>Free and open-source.</li>
+                    <li>Supports both desktop and mobile browsers.</li>
+                    <li>Provides a wide range of features for game development, including physics, sound, and input handling.</li>
+                    <li>Has a large and active community, with extensive documentation and tutorials available.</li>
+                </ul>
+            </p>
+            <p>
+                Phaser helps you:
+                <ul>
+                    <li><label>Draw graphics</label>: Draw and animate 2D graphics, like characters and backgrounds.</li>
+                    <li><label>Use physics</label>: Make objects move realistically with built-in physics for actions like jumping or colliding.</li>
+                    <li><label>Handle inputs</label>: React to player actions through keyboard, mouse, or touchscreen.</li>
+                    <li><label>Play sounds</label>: Add sound effects and background music to your game.</li>
+                    <li><label>Load assets</label>: Easily load game images, sounds, and other files.</li>
+                    <li><label>Create animations</label>: Animate game characters and elements.</li>
+                    <li><label>Control the camera</label>: Move and zoom the camera in your game world.</li>
+                    <li><label>Make particle effects</label>: Create special effects like explosions or magic.</li>
+                    <li><label>Manage game scenes</label>: Switch between different parts of your game, like the main menu or levels.</li>
+                    <li><label>Adapt to any screen</label>: Make sure your game looks good on all devices.</li>
+                    <li><label>Build multiplayer games</label>: Work with internet tools to make games you can play with friends.</li>
+                    <li><label>Add game UI</label>: Add game info like scores and health bars on the screen.</li>
+                </ul>
+            </p>
+        </section>
+        <section>
+            <a name="serving-w-web-server"></a>
+            <h2>Serving Phaser App with a Web Server</h2>
+            <p>
+                When you create a game or any web application using Phaser, it needs to be run on a <span class="keyword">web server</span> rather than just opening the HTML file directly in a browser. This is because web browsers have security restrictions that prevent certain features from working when the HTML file is opened from the local file system.
+            </p>
+            <p>
+                Information on how to set up a web server will be provided separately.
+            </p>
+        </section>
+        <section>
+            <a name="hello-world-in-phaser"></a>
+            <h2>&quot;Hello World&quot; in Phaser</h2>
+            <p>
+                A simple way to create a Phaser web app is to create a host HTML file and a JavaScript file that contains the game logic which utilizes the Phaser framework. Here is an example of a &quot;Hello World&quot; Phaser app.
+            </p>
+            <p>
+                Let's start with a simple HTML file:
+                <code>
+                    </code></p><pre><code>    &lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+        &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            &lt;title&gt;Hello World with Phaser&lt;/title&gt;
+            &lt;script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"&gt;&lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;script src="hello-world.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                    </code></pre><code>
+                </code>
+            <p></p>
+            <p>
+                And here is the JavaScript file <code>hello-world.js</code> that contains the game logic:
+                <code>
+                    </code></p><pre><code>    const config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        scene: {
+            preload: preload,
+            create: create
+        }
+    };
+
+    let game = new Phaser.Game(config);
+
+    function preload() {
+        <span class="light">// Loading images and other assets in this function</span>
+        this.load.image('sky', 'assets/sky.png');
+    }
+
+    function create() {
+        <span class="light">// Setting up the game world in this function</span>
+        this.add.image(400, 300, 'sky');
+        this.add.text(400, 300, 'Hello, World!', { fontSize: '32px', fill: '#000' });
+    }
+
+    function update() {
+        <span class="light">// Code to run on every frame of the game</span>
+        <span class="light">// Nothing to run in this example</span>
+    }
+                    </code></pre><code>
+                </code>
+            <p></p>
+            <p>
+                If served correctly with a web server, the above code will display a blue sky and the text &quot;Hello, World!&quot; in the middle of the screen like this:
+            </p>
+            <p>
+                <img src="images/helloworld_screenshot.png" alt="Hello World in Phaser" style="width:80%;max-width:400px;"/>
+            </p>
+            <p>
+                The above program can be tested <a href="helloworld/index.html" target="_blank">here</a>.
+            </p>
+        </section>
+        <section>
+            <a name="scene-in-phaser"></a>
+            <h2>Scene in Phaser</h2>
+            <p>
+                In Phaser, a <span class="keyword">scene</span> represents a distinct part of your game, such as a single level, a menu screen, or a game-over screen. Think of each scene as a container for all the objects, behaviors, and interactions that make up one portion of your game.
+            </p>
+            <p>
+                In the context of Phaser's <code>preload()</code>, <code>create()</code>, and <code>update()</code>, <span class="keyword"><code>this</code></span> acts as a pointer to the <span class="keyword">scene instance</span>, allowing access to Phaser's scene-related methods, properties, and the ability to interact with the game's assets, objects, and events within that specific scene.
+            </p>
+
+            <h3>Scene Lifecycle</h3>
+            <p>
+                Each scene has its own lifecycle, which includes the following methods:
+                <ul>
+                    <li><label>preload</label>: Load assets, such as images and sounds, into the game.</li>
+                    <li><label>create</label>: Set up the initial state of the game, such as creating objects and setting up the game world.</li>
+                    <li><label>update</label>: Run code on every frame of the game, such as handling user input and updating game state.</li>
+                </ul>
+            <p></p>
+
+            <h3>Asset Loading</h3>
+            <p>
+                The <code>load</code> is used to load external assets such as images, audio, sprite sheets, animations, and even data files into your game. This method is essential for preloading all the necessary assets before the game or a particular scene starts, ensuring smooth gameplay without interruptions for loading. It supports various file types, enabling rich and interactive game designs.
+            </p>
+            <p>
+                Here's an example of loading several assets in the <code>preload</code> method:
+                <code>
+                    </code></p><pre><code>    function preload() {
+        this.load.image('player', 'assets/player.png');
+        this.load.image('background', 'assets/background.png');
+        this.load.audio('backgroundMusic', 'assets/audio/bg-music.mp3');
+        this.load.json('levelData', 'assets/data/level1.json');
+    }
+                    </code></pre><code>
+                </code>
+            <p></p>
+
+            <h3>Adding Objects to a Scene</h3>
+            <p>
+                The <code>add</code> facilitates the creation and addition of various types of game objects to the scene. These objects can include images, sprites, text, particles, and more.
+            </p>
+            <p>
+                Here is an example of adding an image, text, and music to the game world in the <code>create</code> method:
+                <code>
+                    </code></p><pre><code>    function create() {
+        this.add.image(400, 300, 'background');
+        this.add.text(400, 300, 'Hello, World!', { fontSize: '32px', fill: '#000' });
+        const bgm = this.sound.add('backgroundMusic');
+        bgm.play();
+    }
+                    </code></pre><code>
+                </code>
+
+            <p></p>
+        </section>
+        <section class="question-item">
+            <div class="question-picture">
+                <img src="images/stickers/wombat.png">
+            </div>
+            <div class="question">
+                <p>ข้อใดที่ <label>ไม่จำเป็น</label>
+                    ต้องผ่านการ preload ใน scene life cycle ของ Phaser 
+                </p>
+            </div>
+        </section>
+        <section>
+            <a name="handling-mouse-clicks"></a>
+            <h2>Handling Mouse Clicks in Phaser</h2>
+            <p>
+                Here is a more complex example of a Phaser app. This app creates a circle can move to the point where the user clicks the mouse.
+            </p>
+            <p>
+                Here is the host HTML file:
+                <code>
+                    </code></p><pre><code>    &lt;!DOCTYPE html&gt;
+    &lt;html lang="en"&gt;
+        &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+            &lt;title&gt;Walking Circle with Phaser&lt;/title&gt;
+            &lt;script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"&gt;&lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;script src="walking-circle.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+    &lt;/html&gt;
+                    </code></pre><code>
+                </code>
+            <p></p>
+            <p>
+                And here is the JavaScript file <code>walking-circle.js</code> that contains the game logic:
+            </p>
+            <code>
+                <pre>
+    const config = {
+        type: Phaser.AUTO,
+        width: 800,
+        height: 600,
+        scene: {
+            preload: preload,
+            create: create,
+            update: update
+        }
+    };
+    
+    let player;
+    let target = {x: 400, y: 300};
+    let graphics;
+    
+    function preload() {
+        // Preload assets if any
+    }
+    
+    function create() {
+        // Create graphics object for drawing
+        graphics = this.add.graphics({ fillStyle: { color: 0xff0000 } });
+    
+        // Initial player position
+        player = new Phaser.Geom.Circle(400, 300, 20);
+        
+        // Draw player
+        graphics.fillCircleShape(player);
+    
+        // Setup input
+        this.input.on('pointerup', function (pointer) {
+            // Update target on click
+            console.log(`Pointer lifted at x: ${pointer.x}, y: ${pointer.y}`);
+            target.x = pointer.x;
+            target.y = pointer.y;
+        }, this);
+    }
+    
+    function update() {
+        if (target.x === undefined || target.y === undefined) return;
+    
+        // Move player towards target
+        const distance = Phaser.Math.Distance.Between(player.x, player.y, target.x, target.y);
+        console.log(`Distance to target (${target.x},${target.y}): ${distance}`);
+        if (distance &lt; 1) {
+            target.x = undefined;
+            target.y = undefined;
+            // Stop moving when close to target
+        } else {
+            const angle = Phaser.Math.Angle.Between(player.x, player.y, target.x, target.y);
+            player.x += Math.cos(angle) * 2; // Adjust speed as necessary
+            player.y += Math.sin(angle) * 2; // Adjust speed as necessary
+            graphics.clear(); // Clear previous frame
+            graphics.fillCircleShape(player); // Draw player at new position
+        }
+    }
+    
+    let game = new Phaser.Game(config);
+            </pre>
+        </code>
+        <p>
+            If served correctly with a web server, the above code will display a red circle that can move to the point where the user clicks the mouse. The code can be tested <a href="walkingcircle/index.html" target="_blank">here</a>.
+        </p>
+        <p>
+            Here's some points you might want to know about the code:
+            <ul>
+                <li>
+                    In the <code>create</code> function of the provided Phaser app, an event listener is set up to respond to <span class="keyword">pointerup events</span>, which occur when the user releases a pointer device button (like a mouse button or lifts their finger off a touchscreen). This event listener mechanism is crucial for making the game interactive, as it allows the player to move the character (represented by a circle) to different locations on the screen by clicking or tapping.
+                </li>
+                <li>
+                    The code calculates the distance between the player's current position and the target location using <code>Phaser.Math.Distance.Between</code>. This helps determine how far the player is from the target.
+                </li>
+                <li>
+                    If the player hasn't reached the target, it calculates the angle between the player's current position and the target using <code>Phaser.Math.Angle.Between</code>. Then, it updates the player's position by moving it a small step towards the target. This step size is determined by multiplying <code>Math.cos(angle)</code> and <code>Math.sin(angle)</code> by 2 (the speed), adjusting the player's <code>x</code> and <code>y</code> coordinates towards the target.
+                    If the player hasn't reached the target, it calculates the angle between the player's current position and the target using <code>Phaser.Math.Angle.Between</code>. Then, it updates the player's position by moving it a small step towards the target. This step size is determined by multiplying <code>Math.cos(angle)</code> and <code>Math.sin(angle)</code> by 2 (the speed), adjusting the player's <code>x</code> and <code>y</code> coordinates towards the target.
+                </li>
+                <li>
+                    After updating the player's position, it clears the previous frame's drawing with <code>graphics.clear()</code> and redraws the player at the new position.
+                </li>
+            </ul>
+        <p></p>
+    </section>
+    <section class="question-item">
+        <div class="question-picture">
+            <img src="images/stickers/cat.png">
+        </div>
+        <div class="question">
+            <p>ข้อใดจัดเป็น event “pointerup” ใน Phaser
+            </p>
+        </div>
+    </section>
+    <section>
+        <a name="animation-w-sprite-sheets"></a>
+        <h2>Animation with Sprite Sheets</h2>
+        <p>
+            In game development, <span class="keyword">sprite sheets</span> are used to create animations. A sprite sheet is a single image that contains multiple frames of an animation. Each frame is a separate image, and the sprite sheet combines them into a single image. This technique is used to optimize performance and reduce the number of server requests when loading the game.
+        </p>
+        <p>
+            Here is an example of how to do it in Phaser.
+        </p>
+        <p>
+            Let's start with the HTML file:
+            <code>
+                </code></p><pre><code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+        &lt;head&gt;
+            &lt;title&gt;Phaser Animated Sprite Example&lt;/title&gt;
+            &lt;script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"&gt;&lt;/script&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;p&gt;Here are the sprite sheets:&lt;/p&gt;
+            &lt;div&gt;
+                &lt;img src="assets/DinoSprites - doux.png"/&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;img src="assets/DinoSprites - mort.png"/&gt;
+            &lt;/div&gt;
+            &lt;p&gt;Here are two players animated with Phaser based on the sprite sheets above:&lt;/p&gt;
+            &lt;script src="animated-sprites.js"&gt;&lt;/script&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+
+                </code></pre><code>
+            </code>
+        <p></p>
+        <p>
+            And here is the JavaScript file <code>animation-spritesheet.js</code> that contains the game logic:
+            <code>
+                </code></p><pre><code>
+        const config = {
+            type: Phaser.AUTO,
+            width: 108,
+            height: 44,
+            backgroundColor: '#dddddd', 
+            scene: {
+                preload: preload,
+                create: create
+            }
+        };
+        
+        function preload() {
+            // Load two different sprite sheets for the players
+            this.load.spritesheet('player1', 'assets/DinoSprites - doux.png', { frameWidth: 24, frameHeight: 24 });
+            this.load.spritesheet('player2', 'assets/DinoSprites - mort.png', { frameWidth: 24, frameHeight: 24 });
+        }
+        
+        function create() {
+            // Create animations for each player
+            this.anims.create({
+                key: 'walk1',
+                frames: this.anims.generateFrameNumbers('player1', { start: 0, end: 24 }),
+                frameRate: 10,
+                repeat: -1
+            });
+            this.anims.create({
+                key: 'walk2',
+                frames: this.anims.generateFrameNumbers('player2', { start: 0, end: 24 }),
+                frameRate: 10,
+                repeat: -1
+            });
+        
+            // Array to hold the player sprites
+            let players = [];
+        
+            // Add the first player sprite, animate it with 'walk1'
+            players.push(this.add.sprite(20, 20, 'player1').play('walk1'));
+        
+            // Add the second player sprite, animate it with 'walk2'
+            let player2 = this.add.sprite(64, 20, 'player2').play('walk2');
+            player2.flipX = true; // Flip the sprite horizontally
+            players.push(player2);
+        }
+        
+        const game = new Phaser.Game(config);
+                        
+                    </code></pre><code>
+                </code>
+            <p></p>
+
+            <p>
+                The above program can be tested <a href="animatedsprites/index.html" target="_blank">here</a>.
+            </p>
+
+            <p>
+                Here are some brief explanations of the code:
+                <ul>
+                    <li>
+                        Two animations are defined using <code>this.anims.create()</code>, each associated with a different player sprite sheet (<code>player1</code> and <code>player2</code>).
+                    </li>
+                    <li>
+                        Each animation is given a unique key (<code>walk1</code> for the first player, <code>walk2</code> for the second), which is used to reference the animation later.
+                    </li>
+                    <li>
+                        <code>this.anims.generateFrameNumbers</code> generates frame numbers for the animation, specifying the start and end frames within the sprite sheet, allowing for a smooth animation sequence from the first to the last frame.
+                    </li>
+                    <li>
+                        <code>frameRate</code> sets how many frames are displayed per second, controlling the speed of the animation.
+                    </li>
+                    <li>
+                        <code>repeat: -1</code> makes the animation loop indefinitely.
+                    </li>
+                    <li>
+                        A sprite for the first player is created at coordinates (20, 20) using <code>this.add.sprite</code>, referencing <code>player1</code> sprite sheet. A similar action is performed for the second player.
+                    </li>
+                    <li>
+                        For each sprite, the sprite is immediately animated with its respective animation by calling <code> the play</code> method.
+                    </li>
+                    <li>
+                        The second player sprite is flipped horizontally using <code>player2.flipX = true</code> to face the opposite direction.
+                    </li>
+                    <li>
+                        Both created sprites object are added to the <code>players</code> array using <code>push</code> just in case we want to do something with them later.
+                    </li>
+                </ul>
+            </p>
+        </section>
+        
+        <section>
+            <a name="what-to-expect"></a>
+            <h2>What to Expect in the Upcoming Activities</h2>
+            <p>
+                In the upcoming activity, you will have a chance to create a Phaser JavaScript web app of a multiplayer virtual space in which all classmates can move around in the space. You will also learn how to use the Fetch API to get data from a server and use it in your game.
+            </p>
+            <p>
+                <img src="https://media.tenor.com/2jKWjZJFxoEAAAAi/molly-jinzhan.gif" style="width:180px;margin-top:40px;"/>
+            </p>
+        </section>
+
+    </main>
+</div>
+    
+</body></html>
